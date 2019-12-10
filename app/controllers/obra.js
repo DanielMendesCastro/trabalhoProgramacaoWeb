@@ -14,7 +14,13 @@ module.exports.index = function (resposta) {
 }
 
 module.exports.novo = function (resposta) {
-  resposta.render('obra/novo');
+  obra = {};
+  models.engenheiro.findAll().then((engenheiros) => {
+    obra.engenheiros = engenheiros;
+
+    resposta.render('obra/novo', { obra });
+  });
+
 }
 
 module.exports.alterar = function (requisicao, resposta) {
@@ -29,8 +35,14 @@ module.exports.alterar = function (requisicao, resposta) {
 
 module.exports.detalhe = function (requisicao, resposta) {
   var id_obra = requisicao.query.id;
-  var obra = models.obra.findByPk(id_obra)
-  models.obra.findByPk(id_obra).then(
+  models.obra.findOne({
+    include: {
+      attributes: ['eng_nome'],
+      required: true,
+      model: models.engenheiro
+    },
+    where: { id: id_obra }
+  }).then(
     obra => {
       resposta.render('obra/detalhe', { obra: obra });
     }

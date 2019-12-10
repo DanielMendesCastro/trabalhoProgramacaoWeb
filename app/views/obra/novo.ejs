@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
 
-        <title>Cadastro de Usuário</title>
+        <title>Cadastro de Obras</title>
         <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     </head>
@@ -18,7 +18,7 @@
             </button>
             <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                <a class="nav-item nav-link" href="\engenheiro">Engenheiros<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="\engenheiro">Obras<span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="\sair">Sair</a>
                 </div>
             </div>
@@ -26,55 +26,69 @@
 
         <div class="container">
             <div class="py-5 text-center">
-                <h2>Cadastro de Engenheiros</h2>
-                <p class="lead">Realize o cadastro de Engenheiros</p>
+                <h2>Cadastro de Obras</h2>
+                <p class="lead">Realize o cadastro de Obras</p>
             </div>
 
-            <form action="/cadastrarEngenheiro" method="POST">
+            <form action="/cadastrarObra" method="POST">
+
+                <input id="id" name="id" hidden="hidden" value=""/>
+                
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <label for="eng_nome">Nome</label>
-                        <input type="text" class="form-control" id="eng_nome" name="eng_nome" placeholder="" required>
+                        <label for="obr_cidade">Cidade</label>
+                        <input type="text" class="form-control" id="obr_cidade" name="obr_cidade" value="" required/>
                         <div class="invalid-feedback">
-                            O nome é obrigatório
+                            O nome da Cidade é obrigatório
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="eng_apelido">Apelido</label>
-                        <input type="text" class="form-control" id="eng_apelido" name="eng_apelido" placeholder="" required>
+                        <label for="obr_tipoobra">Tipo Obra</label>
+                        <input type="text" class="form-control" id="obr_tipoobra" name="obr_tipoobra" placeholder="" value="" required>
                         <div class="invalid-feedback">
-                            O Apelido é obrigatório.
+                            O tipo da Obra é obrigatório
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="obr_valor">Valor </label>
+                        <input type="text" class="form-control" id="obr_valor" name="obr_valor" placeholder="" value="" required>
+                        <div class="invalid-feedback">
+                            O Valor é obrigatório
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                    <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="eng_codigo">Engenheiro</label>
+                            </div> 
+                            <select class="custom-select" name="eng_codigo" id="eng_codigo">
+                                <% if(obra.engenheiros) {%>
+                                    <% for(let i = 0; i < obra.engenheiros.length; i++ ) { %>
+                                        <option value=" <%=obra.engenheiros[i].id %> " ><%= obra.engenheiros[i].eng_nome %></option>
+                                    <% } %>
+                                <% } %>
+                            </select>
+                            </div>
+                        <div class="invalid-feedback">
+                            O Engenheiro é obrigatório
                         </div>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <label for="eng_telefone">Telefone </label>
-                        <input type="text" class="form-control" id="eng_telefone" name="eng_telefone" placeholder="" required>
-                        <div class="invalid-feedback">
-                            O Telefone é obrigatório
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="eng_crea">Crea</label>
-                        <input type="text" class="form-control" id="eng_crea" name="eng_crea" placeholder="" required>
-                        <div class="invalid-feedback">
-                            O Crea é obrigatório
-                        </div>
-                    </div>
-                </div>
-                <div class="row mb-3">
-                    <div class="col-md-6">
-                        <label for="eng_datacrea">Data Registro Crea</label>
-                        <input type="date" class="form-control" id="eng_datacrea" name="eng_datacrea" placeholder="" required>
+                        <label for="obr_dtinicio">Data Inicio</label>
+                        <input type="date" class="form-control" id="obr_dtinicio" name="obr_dtinicio" placeholder="" value=""  required>
                         <div class="invalid-feedback">
                             Informe uma data válida
                         </div>
                     </div>
-                    </div>             
+                </div>
                 <div class="row">
                     <div class="col-md-12 d-flex justify-content-end">
-                        <input type="submit" class="btn btn-success" value="Cadastrar">
+                        <input type="submit" class="btn btn-primary" value="Salvar Alterações">
                     </div>
                 </div>
             </form>

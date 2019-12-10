@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
 
-        <title>Edição de Usuário</title>
+        <title>Detalhe de Obra</title>
 
         <!-- Bootstrap core CSS -->
         <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -20,7 +20,7 @@
             </button>
             <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                <a class="nav-item nav-link" href="\engenheiro">Engenheiro<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="\obra">Obras<span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="\login">Sair</a>
                 </div>
             </div>
@@ -28,54 +28,53 @@
 
         <div class="container">
             <div class="py-5 text-center">
-                <h2>Detalhes de Engenheiro</h2>
+                <h2>Detalhes de Obras</h2>
             </div>
 
-            <form action="/atualizarEngenheiro" method="POST">
+            <form action="/atualizarObra" method="POST">
 
-                <input id="id" name="id" hidden="hidden" value="<%=engenheiro.id%>"/>
+                <input id="id" name="id" hidden="hidden" value="<%=obra.id%>"/>
                 
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <label for="eng_nome">Nome</label>
-                        <input type="text" class="form-control" id="eng_nome" name="eng_nome" value="<%=engenheiro.eng_nome%>" disabled/>
+                        <label for="obr_cidade">Cidade</label>
+                        <input type="text" class="form-control" id="obr_cidade" name="obr_cidade" value="<%=obra.obr_cidade%>" disabled/>
                         <div class="invalid-feedback">
-                            O nome é obrigatório
+                            O nome da Cidade é obrigatório
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="eng_apelido">Apelido</label>
-                        <input type="text" class="form-control" id="eng_apelido" name="eng_apelido" placeholder="" value="<%= engenheiro.eng_apelido %>" disabled>
+                        <label for="obr_tipoobra">Tipo Obra</label>
+                        <input type="text" class="form-control" id="obr_tipoobra" name="obr_tipoobra" placeholder="" value="<%= obra.obr_tipoobra %>" disabled>
                         <div class="invalid-feedback">
-                            O Apelido é obrigatório
+                            O tipo da Obra é obrigatório
                         </div>
                     </div>
                 </div>
 
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <label for="eng_telefone">Telefone </label>
-                        <input type="text" class="form-control" id="eng_telefone" name="eng_telefone" placeholder="" value="<%= engenheiro.eng_telefone %>" disabled>
+                        <label for="obr_valor">Valor </label>
+                        <input type="text" class="form-control" id="obr_valor" name="obr_valor" placeholder="" value="<%= obra.obr_valor %>" disabled>
                         <div class="invalid-feedback">
-                            O Telefone é obrigatório
+                            O Valor é obrigatório
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="eng_crea">Crea</label>
-                        <input type="text" class="form-control" id="eng_crea" name="eng_crea" placeholder="" value="<%= engenheiro.eng_crea %>" disabled>
+                        <label for="eng_nome">Engenheiro </label>
+                        <input type="text" class="form-control" id="eng_nome" name="eng_nome" placeholder="" value="<%= obra.engenheiro.eng_nome %>" disabled>
                         <div class="invalid-feedback">
-                            O Crea é obrigatório
+                            O Valor é obrigatório
                         </div>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <label for="eng_datacrea">Data Registro Crea</label>
-                        <input type="date" class="form-control" id="eng_datacrea" name="eng_datacrea" placeholder="" value="<%= engenheiro.teste %>"  disabled>
+                        <label for="obr_dtinicio">Data Inicio</label>
+                        <input type="date" class="form-control" id="obr_dtinicio" name="obr_dtinicio" placeholder="" value="<%= obra.obr_dtinicio %>"  disabled>
                         <div class="invalid-feedback">
                             Informe uma data válida
                         </div>
-                    </div>
                     </div>
                 </div>
             </form>
