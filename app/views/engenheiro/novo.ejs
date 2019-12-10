@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+
+        <title>Cadastro de Usuário</title>
+        <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    </head>
+    <body>
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="\">Home</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                <a class="nav-item nav-link" href="\engenheiro">Engenheiros<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="\sair">Sair</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <div class="py-5 text-center">
+                <h2>Cadastro de Engenheiros</h2>
+                <p class="lead">Realize o cadastro de Engenheiros</p>
+            </div>
+
+            <form action="/cadastrarEngenheiro" method="POST">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="eng_nome">Nome</label>
+                        <input type="text" class="form-control" id="eng_nome" name="eng_nome" placeholder="" required>
+                        <div class="invalid-feedback">
+                            O nome é obrigatório
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="eng_apelido">Apelido</label>
+                        <input type="text" class="form-control" id="eng_apelido" name="eng_apelido" placeholder="" required>
+                        <div class="invalid-feedback">
+                            O Apelido é obrigatório.
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="eng_telefone">Telefone </label>
+                        <input type="text" class="form-control" id="eng_telefone" name="eng_telefone" placeholder="" required>
+                        <div class="invalid-feedback">
+                            O Telefone é obrigatório
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="eng_crea">Crea</label>
+                        <input type="text" class="form-control" id="eng_crea" name="eng_crea" placeholder="" required>
+                        <div class="invalid-feedback">
+                            O Crea é obrigatório
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="eng_datacrea">Data Registro Crea</label>
+                        <input type="date" class="form-control" id="eng_datacrea" name="eng_datacrea" placeholder="" required>
+                        <div class="invalid-feedback">
+                            Informe uma data válida
+                        </div>
+                    </div>
+                    </div>             
+                <div class="row">
+                    <div class="col-md-12 d-flex justify-content-end">
+                        <input type="submit" class="btn btn-success" value="Cadastrar">
+                    </div>
+                </div>
+            </form>
+        </div>
+    
+        <!-- Bootstrap core JavaScript -->
+        <script src="/popper/dist/umd/popper.min.js"></script>
+        <script src="/jquery/dist/jquery.min.js"></script>
+        <script src="/bootstrap/js/bootstrap.min.js"></script>
+
+    </body>
+</html>
