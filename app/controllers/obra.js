@@ -1,9 +1,15 @@
     const models  =  require('../../models');
 
 module.exports.index = function(resposta){
+  var obrs;
     models.obra.findAll().then(function(obras) {
-        resposta.render('obra', {obras: obras});
-      });        
+      obras.forEach(obra => {
+        models.engenheiro.findByPk(obra.eng_codigo).then((engenheiro) => {
+          obra.eng_nome = engenheiro.eng_nome
+        });  
+      });
+      obrs = obras;        
+      }).then(resposta.render('obra', {obras: obras}))        
 }
 
 module.exports.novo = function(resposta){
@@ -12,11 +18,12 @@ module.exports.novo = function(resposta){
 
 module.exports.alterar = function(requisicao, resposta){
   var  id_obra = requisicao.query.id;
-  models.obra.findByPk(id_obra).then(
-      obra => {
-        resposta.render('obra/alterar', {obra:obra });
-      }
-  ).catch(err => console.log(err)); 
+  models.obra.findByPk(id_obra).then((obra) =>{
+    models.engenheiro.findAll().then((engenheiros) => {
+      obra.engenheiros = engenheiros;
+      resposta.render('obra/alterar', {obra:obra });
+    });
+  }).catch(err => console.log(err)); 
 }
 
 module.exports.detalhe = function( requisicao, resposta){
@@ -41,7 +48,6 @@ module.exports.excluir = function(requisicao, resposta){
 
 module.exports.cadastrarObra = function(requisicao, resposta){
     var  formulario = requisicao.body;
-    console.log(formulario);
     models.obra.create(formulario).then(function() {
     resposta.redirect('/obra');
 }).catch(err => console.log(err));
@@ -50,6 +56,7 @@ module.exports.cadastrarObra = function(requisicao, resposta){
 module.exports.atualizarObra = function(requisicao, resposta){
 
     var  formulario = requisicao.body;
+    console.log(formulario);
     models.obra.update(formulario,{
         where: {id : formulario.id}
     })

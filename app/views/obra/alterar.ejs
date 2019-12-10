@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
 
-        <title>Edição de Engenheiros</title>
+        <title>Edição de Obras</title>
 
         <!-- Bootstrap core CSS -->
         <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -20,7 +20,7 @@
             </button>
             <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                <a class="nav-item nav-link" href="\engenheiro">Engenheiros<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="\obra">Obras<span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="\sair">Sair</a>
                 </div>
             </div>
@@ -28,51 +28,61 @@
 
         <div class="container">
             <div class="py-5 text-center">
-                <h2>Edição de Engenheiro</h2>
-                <p class="lead">Realize atualizações no cadastro de Engenheiros </p>
+                <h2>Edição de Obras</h2>
+                <p class="lead">Realize atualizações no cadastro de Obras </p>
             </div>
 
-            <form action="/atualizarEngenheiro" method="POST">
+            <form action="/atualizarObra" method="POST">
 
-                <input id="id" name="id" hidden="hidden" value="<%=engenheiro.id%>"/>
+                <input id="id" name="id" hidden="hidden" value="<%=obra.id%>"/>
                 
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <label for="eng_nome">Nome</label>
-                        <input type="text" class="form-control" id="eng_nome" name="eng_nome" value="<%=engenheiro.eng_nome%>"/>
+                        <label for="obr_cidade">Cidade</label>
+                        <input type="text" class="form-control" id="obr_cidade" name="obr_cidade" value="<%=obra.obr_cidade%>"/>
                         <div class="invalid-feedback">
-                            O nome é obrigatório
+                            O nome da Cidade é obrigatório
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="eng_apelido">Apelido</label>
-                        <input type="text" class="form-control" id="eng_apelido" name="eng_apelido" placeholder="" value="<%= engenheiro.eng_apelido %>" required>
+                        <label for="obr_tipoobra">Tipo Obra</label>
+                        <input type="text" class="form-control" id="obr_tipoobra" name="obr_tipoobra" placeholder="" value="<%= obra.obr_tipoobra %>" required>
                         <div class="invalid-feedback">
-                            O Apelido é obrigatório
+                            O tipo da Obra é obrigatório
                         </div>
                     </div>
                 </div>
 
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <label for="eng_telefone">Telefone </label>
-                        <input type="text" class="form-control" id="eng_telefone" name="eng_telefone" placeholder="" value="<%= engenheiro.eng_telefone %>" required>
+                        <label for="obr_valor">Valor </label>
+                        <input type="text" class="form-control" id="obr_valor" name="obr_valor" placeholder="" value="<%= obra.obr_valor %>" required>
                         <div class="invalid-feedback">
-                            O Telefone é obrigatório
+                            O Valor é obrigatório
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <label for="eng_crea">Crea</label>
-                        <input type="text" class="form-control" id="eng_crea" name="eng_crea" placeholder="" value="<%= engenheiro.eng_crea %>" required>
+                    <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="eng_codigo">Engenheiro</label>
+                            </div> 
+                            <select class="custom-select" name="eng_codigo" id="eng_codigo">
+                                <% if(obra.engenheiros) {%>
+                                    <% for(let i = 0; i < obra.engenheiros.length; i++ ) { %>
+                                        <option  <%=(obra.engenheiros[i].id == obra.eng_codigo?"Selected":"")  %> value=" <%=obra.engenheiros[i].id %> " ><%= obra.engenheiros[i].eng_nome %></option>
+                                    <% } %>
+                                <% } %>
+                            </select>
+                            </div>
                         <div class="invalid-feedback">
-                            O Crea é obrigatório
+                            O Engenheiro é obrigatório
                         </div>
                     </div>
                 </div>
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <label for="eng_datacrea">Data Registro Crea</label>
-                        <input type="date" class="form-control" id="eng_datacrea" name="eng_datacrea" placeholder="" value="<%= engenheiro.teste %>"  required>
+                        <label for="obr_dtinicio">Data Inicio</label>
+                        <input type="date" class="form-control" id="obr_dtinicio" name="obr_dtinicio" placeholder="" value="<%= obra.obr_dtinicio %>"  required>
                         <div class="invalid-feedback">
                             Informe uma data válida
                         </div>

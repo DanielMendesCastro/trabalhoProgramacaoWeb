@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
-        <title>Cadastro de Usuário</title>
+        <title>Cadastro de Obras</title>
         <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link href="/icons/iconfont/material-icons.css" rel="stylesheet">
 
@@ -18,9 +18,9 @@
             </button>
             <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                <a class="nav-item nav-link" href="\usuario">Usuários<span class="sr-only">(current)</span></a>
                 <a class="nav-item nav-link" href="\engenheiro">Engenheiros<span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link" href="\obra">Obras<span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="\usuario">Usuários</a>
+                <a class="nav-item nav-link" href="\obra">Obras</a>
                 <a class="nav-item nav-link" href="\sair">Sair</a>
                 </div>
             </div>
@@ -28,37 +28,40 @@
 
         <div class="container">
             <div class="py-5 text-center">
-                <h2>Usuários Cadastrados</h2>
-                <p class="lead">Lista de usuários cadastrados no sistema</p>
+                <h2>Obras Cadastradas</h2>
+                <p class="lead">Lista de Obras cadastrados no sistema</p>
             </div>
 
             <table class="table">
                 <thead>
                   <tr>
                     <th scope="col" hidden="hidden">ID</th>
-                    <th scope="col">Primeiro Nome</th>
-                    <th scope="col">Ultimo Nome</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Detalhes</th>
+                    <th scope="col">Cidade</th>
+                    <th scope="col">Tipo Obra</th>
+                    <th scope="col">Valor</th>
+                    <th scope="col">Engenheiro</th>
+                    <th scope="col">Data Inicio</th>
                     <th scope="col">Editar</th>
                     <th scope="col">Excluir</th>
                   </tr>
                 </thead>
                 <tbody>
-                    <% if(usuarios) {%>
-                        <% for(let i = 0; i < usuarios.length; i++ ) { %>
+                    <% if(obras) {%>
+                        <% for(let i = 0; i < obras.length; i++ ) { %>
                             <tr>
-                                <th hidden="hidden"><%=usuarios[i].id %></th>
-                                <td><%= usuarios[i].primeiroNome %></td>
-                                <td><%= usuarios[i].ultimoNome %></td>
-                                <td><%= usuarios[i].email %></td>
-                                <td><a href="/detalheusuario?id=<%= usuarios[i].id %>" class="btn btn-outline-info">
+                                <th hidden="hidden"><%=obras[i].id %></th>
+                                <td><%= obras[i].obr_cidade %></td>
+                                <td><%= obras[i].obr_tipoobra %></td>
+                                <td><%= obras[i].obr_valor %></td>
+                                <td><%= obras[i].eng_nome %></td>
+                                <td><%= obras[i].obr_dtinicio %></td>
+                                <td><a href="/detalheobra?id=<%= obras[i].id %>" class="btn btn-outline-info">
                                     <i class="material-icons">info</i>
                                 </a></td>
-                                <td><a href="/alterarusuario?id=<%= usuarios[i].id %>" class="btn btn-outline-primary">
+                                <td><a href="/alterarobra?id=<%= obras[i].id %>" class="btn btn-outline-primary">
                                     <i class="material-icons">edit</i>
                                 </a></td>
-                                <td><a href="/excluirusuario?id=<%= usuarios[i].id %>" class="btn btn-outline-danger">
+                                <td><a href="/excluirobra?id=<%= obras[i].id %>" class="btn btn-outline-danger">
                                     <i class="material-icons">delete</i>
                                 </a></td>
                             </tr>
@@ -66,10 +69,10 @@
                     <% } %>
                 </tbody>
               </table>
-        </div>
-        <div class="row">
-            <div class="col-md-11 d-flex justify-content-end">
-                <a class="btn btn-primary" href="\novousuario">Cadastro</a>
+              <div class="row">
+                <div class="col-md-11 d-flex justify-content-end">
+                    <a class="btn btn-primary" href="\novoobra">Cadastro</a>
+                </div>
             </div>
         </div>
     
